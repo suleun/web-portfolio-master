@@ -40,20 +40,30 @@
         </style>
     </head>
     <body>
+        <!-- 회의록이 있을 경우 -->
         <div class="card">
             회의록은 다 리스트로 뜨게 한 다음에 특별한 역할을 가지고 있는 사용자만 수정, 또는 작성 가능하게 하기
             <br>작성은 새 탭으로 열어서 작성할 수 있게
             <br>수정은 모달창으로 할 수 있게
             <br>삭제는 삭제하기 전에 얼럴트 창으로 한번 묻기
+            
+            <br>CSS는 나중에 한번에 만들어서 합칠게요
+            <br>아 날짜 추가해야되네 
         
         </div>
 
+        <div class="card">
+            <!-- 회의록을 수정 할 수 있는 유저만 볼 수 있는 버튼 -->
+            {프로젝트 이름}의 회의내용을 기록하러 가봐요!
+            <button class="btn btn-outline-success" type="button">작성</button>
+        </div>
+
+        
         <div class="card">
             <div class="card-body">
 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="special">
                     <!-- 회의록을 수정 할 수 있는 유저만 볼 수 있는 버튼 -->
-                    <button class="btn btn-outline-success" type="button">작성</button>
                     <button class="btn btn-outline-warning" type="button">수정</button>
                     <button class="btn btn-outline-danger" type="button">삭제</button>
                 </div>
@@ -104,5 +114,7 @@
 
             </div>
         </div>
+
+</div>
     </body>
 </html>

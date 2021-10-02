@@ -77,6 +77,6 @@
                 -WEGO-
             </h3>
         </div>
-
+        <button>뭔가 만들러 가기</button>
     </body>
 </html>
