@@ -102,44 +102,7 @@
             }
             
 
-            function enterkey() {
-                if (window.event.keyCode == 13) {
-                    divPlus();
-                    
-                    $('input').remove("#rewrite");
-
-                    // document.getElementsById("rewrite").setAttribute('readonly', true);
-                
-                }
-            }
-
-            function divPlus() {
-                let title = document
-                    .getElementById('rewrite')
-                    .value;
-
-                // 체크리스트에 추가 코드
-                let temp_html = `  <div class="form-check">
-                                    <input class="form-check-input" name="lists[]" type="checkbox" checked value="${title}" id="goCheck">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        ${title}
-                                    </label>
-                                    </div>
-                                `;
-                $('#check_plus').append(temp_html)
-
-                // 텍스트 아리아 포함 추가 코드
-
-                let temp_html_div = `<label class="form-check-label" for="defaultCheck1">
-                                        ${title}
-                                </label>
-                                <br>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                <br>
-                                `;
-                $('#plusDiv').append(temp_html_div)
-            };
-
+            
         </script>
 
         <title>ProJect Form Create</title>
@@ -230,23 +193,7 @@
      
 
 
-        <div onclick="checkPlus()">체크리스트 생성</div>
-
-        <button type="button" class="btm_image" id="img_btn" onclick="checkPlus()">
-
-            <img src="\image\icon\list_add_black_1x.png">
-
-        </button>
-        <div class="checkList">
-
-            <div class="form-check" id="check_plus"></div>
-
-        </div>
-        <br>
-
-        <div id="plusDiv"></div>
-        <button type="submit" class="btn btn-primary">저장</button>
-        </form>
+ 
         
     </body>
 </html>
