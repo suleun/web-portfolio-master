@@ -31,11 +31,15 @@
 
         <style>
             body {
-                
+
                 text-align: center;
                 background-color: #E6E6FA;
-                width: 60%;
-                margin: auto;
+                width: 70%;
+                margin:auto;
+            }
+
+            .card{
+                padding: 4%;
             }
 
             /* 로고이미지 */
@@ -50,10 +54,6 @@
                 border-style: outset;
             }
 
-            #img_btn {
-                border: 0;
-                background-color: #E6E6FA;
-            }
 
             #plusDiv {
                 padding: 1%;
@@ -67,24 +67,12 @@
                 border-style: inset;
             }
 
-           
-
+            #emailInput{
+                margin: 1%;
+            }
         </style>
 
         <script>
-
-            function team_email_Plus() {
-
-                let temp_html = `
-                                <input
-                                    type="email"
-                                    class="form-control"
-                                    id="exampleFormControlInput1"
-                                    placeholder="팀원의 이메일 주소를 적어 주세요">
-                
-                                `;
-                $('#add_people').append(temp_html)
-            };
 
             function checkPlus() {
                 let temp_html = `  <div class="form-check">
@@ -100,9 +88,27 @@
                                 `;
                 $('#check_plus').append(temp_html)
             }
-            
 
-            
+            function peopleDiv() {
+                let num = $("select[name=people]").val();
+
+                $('#add_people').empty();
+
+                for (i = 0 ; i < num ; i ++) {
+
+                    let temp_html = `
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    id="emailInput"
+                                    placeholder="팀원의 이메일 주소를 적어 주세요">
+                
+                                `;
+                    $('#add_people').append(temp_html)
+
+                }
+
+            }
         </script>
 
         <title>ProJect Form Create</title>
@@ -111,89 +117,90 @@
     <body>
         <img
             class="logo"
-            alt="사진없어여"
+            alt="WEGO"
             src="/image/HatchfulExport-All/logo_transparent.png">
-        <form action="/projectStore" method="post" enctype="multipart/form-data" onkeydown="return event.key !='Enter';">
+
+        <form
+            class="card"
+            action="/projectStore"
+            method="post"
+            enctype="multipart/form-data"
+            onkeydown="return event.key !='Enter';">
             @csrf
             <div>
-            <!-- 프로젝트 명 -->
-            <div class="form-group">
-                <label for="exampleFormControlInput1">프로젝트 명</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    name="projectTitle"
-                    id="exampleFormControlInput1"
-                    placeholder="프로젝트 명을 입력해 주세요.">
-            </div>
-        </div>
-
-        <div>
+                <!-- 프로젝트 명 -->
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">최대 참여 인원 선택</label>
-                    <select class="form-control" name="people" id="exampleFormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
+                    <label for="exampleFormControlInput1">프로젝트 명</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="projectTitle"
+                        id="exampleFormControlInput1"
+                        placeholder="프로젝트 명을 입력해 주세요.">
+                </div>
+            </div>
+
+            <div>
+                <div class="form-group">
+                    <label for="peopleid">최대 참여 인원 선택</label>
+                    <select class="form-control" name="people" id="peopleid" onchange="peopleDiv()">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
                     </select>
                 </div>
-        </div>
-
-        <div class="add_people">
-            <!-- 팀원추가 -->
-            <div class="form-group" id="add_people">
-                <input
-                    type="email"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="팀원의 이메일 주소를 적어 주세요">
-
             </div>
 
-            <label for="exampleFormControlInput1" id="img_btn" onclick="team_email_Plus()">
-                팀원추가
-            </label>
+            <div class="add_people">
+                <!-- 팀원추가 -->
+                <label for="exampleFormControlInput1" onclick="team_email_Plus()">
+                    팀원추가
+                </label>
 
-            <button
-                type="button"
-                class="btm_image"
-                id="img_btn"
-                onclick="team_email_Plus()">
-                <img src="\image\icon\person_add_black_1x.png">
-            </button>
+                <div class="form-group" id="add_people">
+              
+                </div>
 
-        </div>
-        <br>
-
-        <div>
-            <!-- 프로젝트 개요 -->
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">프로젝트 개요</label>
-                <textarea class="form-control" name="outline" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             <br>
-            <!-- 첨부파일 -->
+
+            <div>
+                <!-- 프로젝트 개요 -->
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">프로젝트 개요</label>
+                    <textarea
+                        class="form-control"
+                        name="outline"
+                        id="exampleFormControlTextarea1"
+                        rows="5"></textarea>
+                </div>
+                <br>
+                <!-- 첨부파일 -->
                 <div class="form-group">
                     <label for="exampleFormControlFile1">Example file input</label>
-                    <input type="file" name="files[]" class="form-control-file" id="exampleFormControlFile1">
+                    <input
+                        type="file"
+                        name="files[]"
+                        class="form-control-file"
+                        id="exampleFormControlFile1">
                 </div>
-        </div>
-
-        <div>
-            <!-- 기대 효과 -->
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">기대효과</label>
-                <textarea class="form-control" name="expectation" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-        </div>
-        <br>
-     
 
+            <div>
+                <!-- 기대 효과 -->
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">기대효과</label>
+                    <textarea
+                        class="form-control"
+                        name="expectation"
+                        id="exampleFormControlTextarea1"
+                        rows="3"></textarea>
+                </div>
+            </div>
+            <br>
 
- 
-        
-    </body>
-</html>
+        </body>
+    </html>
